@@ -1,11 +1,30 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
-
+import { signInWithEmailAndPassword , createUserWithEmailAndPassword ,GoogleAuthProvider , signInWithPopup} from 'firebase/auth';
+import { auth } from '../firebaseconfig';
 
 export const LoginAPI = ( email, password ) => {
     try {
-        signInWithEmailAndPassword( auth , email, password);
-    } catch (error) {
-        return error;
+        let response = signInWithEmailAndPassword( auth , email, password);
+        return response;
+    } catch (err) {
+       return err;
     }
-};
+}; 
+
+export const RegisterAPI = ( email, password ) => {
+    try {
+        let response = createUserWithEmailAndPassword( auth , email, password);
+        return response;
+    } catch (err) {
+       return err;
+    }
+}; 
+
+export const GoogleSigninAPI = () => {
+    try {
+        let googleProvider = new GoogleAuthProvider();
+        let res = signInWithPopup(auth, googleProvider);
+        return res;
+    } catch (err) {
+       return err;
+    }
+}; 

@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
-import { LoginAPI, GoogleSigninAPI } from '../api/AuthAPI';
+import { RegisterAPI, GoogleSigninAPI } from '../api/AuthAPI';
 import '../sass/LoginComponent.scss';
-import GoogleButton from 'react-google-button'
+import GoogleButton from 'react-google-button';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-
 export default function LoginComponent() {
-  const [credentials, setCredentials] = useState({});
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
-  // router navigate
-  let navigate = useNavigate();
-
-  // login method
-  const login = async () => {
+  const register = async () => {
     try {
-      let res = await LoginAPI(credentials.email, credentials.password);
-      toast.success('Login Success');
+      if (credentials.email === '' || credentials.password === '') {
+        toast.error('Please enter email and password');
+        return;
+      }
+
+      let res = await RegisterAPI(credentials.email, credentials.password);
+      toast.success('Account Created Successfully');
       navigate('/home');
     } catch (err) {
-      toast.error('Please Check your Credentials');
+      toast.error('Cannot Create Account. Try Again');
     }
   };
-  // google sign in
+
   const googleSignin = async () => {
     let res = GoogleSigninAPI();
     toast.success('Signed in with Google Account');
@@ -35,29 +36,23 @@ export default function LoginComponent() {
       <div className='auth-input'>
         <input
           onChange={(event) => setCredentials({ ...credentials, email: event.target.value })}
+          value={credentials.email}
           placeholder='Enter Your Email'
           className='common-input'
           type='email'
-
         />
         <input
           onChange={(event) => setCredentials({ ...credentials, password: event.target.value })}
+          value={credentials.password}
           placeholder='Enter Your Password'
           className='common-input'
           type='password'
-
         />
       </div>
-      <button onClick={login} className='login-btn'>
-        Log in
+      <button onClick={register} className='login-btn' disabled={!credentials.email || !credentials.password}>
+        Create Account
       </button>
-      <button onClick={() => navigate('/register')} className='login-btn google-btn'>
-        Register
-      </button>
-      <GoogleButton
-      className='google-btn'
-      onClick={googleSignin}
-      />
+      <GoogleButton className='google-btn' onClick={googleSignin} />
     </div>
   );
 }
