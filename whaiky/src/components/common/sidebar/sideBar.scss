@@ -1,9 +1,20 @@
 .sideBar { 
     width: max-content;
-    border: 2px solid #000000;
-    color: black;
+    border: 2px solid #FFF;
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px;
+}
+.reactIcon{
+    color: #FFF;
+}
+.reactIcon:hover {
+    scale: 1.1;
+    color: #61dafb;
+}
+img {
+    width: 100px;
+    height: 100px;
+
 }
