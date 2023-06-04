@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import Poststatus from './common/postupdate/Postupdate'
 import '../sass/HomeComponent.scss'
 
-export default function HomeComponent() {
+export default function HomeComponent( {currentUser}) {
   return (
     <div className='homeContainer'>
-      <div className='postStatusMain'>
-         <button className='postStatus'>Start Post</button>
-      </div>
+      <Poststatus currentUser={currentUser} />
     </div>
   )
 }

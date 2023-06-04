@@ -1,0 +1,37 @@
+.popup-card {
+  border: 1px solid #a8a8a8;
+  width: 200px;
+  height: auto;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  flex-direction: column;
+  padding: 20px;
+  .name {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 600;
+    text-align: left;
+    margin-top: -7px;
+  }
+
+  .headline {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.9);
+    margin-top: -15px;
+  }
+  .popup-option {
+    cursor: pointer;
+    color: black;
+    list-style: none;
+    font-weight: bold;
+  }
+  .popup-option:hover {
+    color: #af1d1d;
+    scale: 1.1;
+  }
+}

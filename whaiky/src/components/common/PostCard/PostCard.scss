@@ -1,0 +1,30 @@
+.postsCard {
+    width: 90vw;
+    border: solid #FFF 3px;
+    background-color: #1d1c1c;
+    display: flex;
+    min-height: auto;
+    margin: 20px 0;
+    flex-direction: column;
+    padding-bottom: 10px;
+    .status {
+        text-align: left;
+        width: 80%;
+        margin: 10px;
+    }
+}
+.timeStamp {
+    font-weight: bold;
+    margin: 10px;
+}
+.personalInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.name {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+}

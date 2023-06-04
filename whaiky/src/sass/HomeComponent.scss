@@ -5,27 +5,3 @@
     margin: 2rem 0;
 }
 
-.postStatusMain {
-    width: 90vw;
-    border: solid #FFF 3px;
-    background-color: #1d1c1c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-}
-.postStatus {
-    border: solid #FFF 1px;
-    width: 80%;
-    height: 50px;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    cursor: pointer;
-
-}
-.postStatus:hover {
-    background-color: #FFF;
-    color: #000;
-}

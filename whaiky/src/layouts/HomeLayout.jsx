@@ -1,12 +1,19 @@
-import React from 'react'
-import Home from '../pages/Home'
-import Sidebar from '../components/common/sidebar/Sidebar.jsx'
+import React, { useMemo , useState } from 'react';
+import Home from '../pages/Home';
+import Sidebar from '../components/common/sidebar/Sidebar.jsx';
+import { getCurrentUser } from '../api/FirestoreAPI';
 
 export default function HomeLayout() {
+
+  const [currentUser , setCurrentUser] = useState({});
+
+  useMemo(() => {
+    getCurrentUser(setCurrentUser);
+  }, []);
   return (
-    <div className='homeLayout'>
+      <>
         <Sidebar/>
-        <Home/>
-    </div>
+        <Home currentUser={currentUser}/>
+      </>
   )
 }

@@ -17,6 +17,7 @@ export default function LoginComponent() {
     try {
       let res = await LoginAPI(credentials.email, credentials.password);
       toast.success('Login Success');
+      localStorage.setItem('userEmail', res.user.email);
       navigate('/home');
     } catch (err) {
       toast.error('Please Check your Credentials');
@@ -25,6 +26,7 @@ export default function LoginComponent() {
   // google sign in
   const googleSignin = async () => {
     let res = GoogleSigninAPI();
+    localStorage.setItem('userEmail', res.user.email);
     toast.success('Signed in with Google Account');
     navigate('/home');
   };
