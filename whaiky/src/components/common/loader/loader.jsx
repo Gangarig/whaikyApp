@@ -1,7 +1,7 @@
 import React from 'react'
 import { Space, Spin } from 'antd';
 
-export default function loader() {
+export default function Loader() {
   return (
     <div className='loader'> 
     <h2>Loading ...</h2>
