@@ -1,7 +1,12 @@
 import React from 'react'
+import '../sass/HomeComponent.scss'
 
 export default function HomeComponent() {
   return (
-    <div><h1>HomeComponent</h1></div>
+    <div className='homeContainer'>
+      <div className='postStatusMain'>
+         <button className='postStatus'>Start Post</button>
+      </div>
+    </div>
   )
 }
