@@ -10,8 +10,12 @@ export default function ProfileCard({currentUser, onEdit}) {
       <div>
         <button className='editBtn' onClick={onEdit} >EDIT</button>
       </div>
-      <h3 className='userName'>{currentUser.name}</h3>
+      <p className='userName'>{currentUser.FirstName} {currentUser.LastName}</p>
+      <p className='userEmail'>{currentUser.Address}</p>
+      <p className='userEmail'>{currentUser.Country}</p>
+      <p className='userEmail'>{currentUser.Region}</p>
       <p className='userEmail'>{currentUser.email}</p>
+      <p className='userEmail'>{currentUser.PhoneNumber}</p>
       </div>
     </>
   );

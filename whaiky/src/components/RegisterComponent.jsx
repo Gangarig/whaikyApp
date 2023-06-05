@@ -48,6 +48,7 @@ export default function LoginComponent() {
           placeholder='Enter Your Name'
           className='common-input'
           type='text'
+          name='name'
         />
         <input
           onChange={(event) => setCredentials({ ...credentials, email: event.target.value })}
@@ -55,6 +56,7 @@ export default function LoginComponent() {
           placeholder='Enter Your Email'
           className='common-input'
           type='email'
+          name='email'
         />
         <input
           onChange={(event) => setCredentials({ ...credentials, password: event.target.value })}
@@ -62,6 +64,7 @@ export default function LoginComponent() {
           placeholder='Enter Your Password'
           className='common-input'
           type='password'
+          name='password'
         />
       </div>
       <button onClick={register} className='login-btn' disabled={!credentials.email || !credentials.password}>

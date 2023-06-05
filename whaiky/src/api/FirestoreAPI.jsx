@@ -1,6 +1,6 @@
 import Item from 'antd/es/list/Item';
 import { firestore } from '../firebaseconfig';
-import { addDoc, collection ,onSnapshot } from 'firebase/firestore';
+import { addDoc, collection ,doc,onSnapshot, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
 let postsRef = collection(firestore, 'posts');
@@ -20,7 +20,7 @@ export const postStatus = (object) => {
 export const getStatus = (setAllStatuses) => {
     onSnapshot(postsRef, (response) => {
         setAllStatuses(response.docs.map((doc) => {
-            return { ...doc.data() , id: doc.id};
+            return { ...doc.data() , userID: doc.id};
         })
         );
     });
@@ -39,7 +39,7 @@ export const getCurrentUser = (setCurrentUser) => {
       setCurrentUser(
         response.docs
           .map((docs) => {
-            return { ...docs.data(), id: docs.id };
+            return { ...docs.data(), userID: docs.id };
           })
           .filter((item) => {
             return item.email === localStorage.getItem("userEmail");
@@ -47,3 +47,14 @@ export const getCurrentUser = (setCurrentUser) => {
       );
     });
   };
+
+export const editProfile = (userID , payLoad) => {
+ let userToEdit = doc(userRef, userID);
+ updateDoc(userToEdit, payLoad)
+  .then(() => {
+    toast.success("Profile Updated Successfully");
+  })
+  .catch((err) => {
+    toast.error("Something went wrong");
+  });
+} 
