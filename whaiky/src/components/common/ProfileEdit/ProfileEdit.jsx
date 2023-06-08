@@ -12,9 +12,10 @@ export default function ProfileEdit({onEdit , currentUser}) {
     setEditInouts({...editInputs, ...input});
 
   };
-  const updateProfileData = () => {
-    editProfile(currentUser?.userID , editInputs);
-  };
+  const updateProfileData = async () => {
+     await editProfile(currentUser?.userID , editInputs);
+     await onEdit();
+    };
 
   return (
     <div className='profileEdit'>
